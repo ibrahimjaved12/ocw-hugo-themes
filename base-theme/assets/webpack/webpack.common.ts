@@ -76,7 +76,13 @@ const config: webpack.Configuration = {
           },
           "css-loader",
           "postcss-loader",
-          "sass-loader"
+          "sass-loader",
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [fromRoot("./base-theme/assets/css/bootstrap.scss")],
+            },
+          },
         ]
       },
 
