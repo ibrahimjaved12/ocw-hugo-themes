@@ -57,7 +57,23 @@ const config: webpack.Configuration = {
     path:     fromRoot("./base-theme/dist/static_shared"),
     filename: "js/[name].js"
   },
-
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/](?!(bootstrap))/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+        bootstrap: {
+          test: /[\\/]node_modules[\\/](bootstrap)/,
+          name: 'bootstrap',
+          chunks: 'all',
+        },
+      },
+    },
+  },
   module: {
     rules: [
       {
